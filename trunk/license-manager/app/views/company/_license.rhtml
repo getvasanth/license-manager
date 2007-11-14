@@ -1,0 +1,3 @@
+<h3><%=h license.filename %> - <%=h license.comment %>
+<%= link_to 'Edit', { :controller => 'license', :action => 'edit', :id => license }, :method => :post %>
+<%= link_to 'Destroy', { :action => 'remove_license', :license_id => license }, :method => :post %></h3>

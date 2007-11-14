@@ -1,0 +1,40 @@
+<% for column in Company.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @company.send(column.name) %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', :action => 'edit', :id => @company %> |
+<%= link_to 'Back', :action => 'list' %>
+
+<div id="orders">
+  <h2>Orders</h2>
+  <%= render(:partial => "order", :collection => @company.orders ) %>
+</div>
+
+<%= link_to 'New order', :controller => 'order', :action => 'new', :id => @company %>
+
+<!--
+<h3>Add an order :</h3>
+<%= form_remote_tag(:url => {:controller=> :company, :action => :add_order, :id => @company }, :update =>  'orders', :position=> "after") %>
+  Start date : <%= date_select "order", "start_date" %><br />
+  Expiration date : <%= date_select "order", "expiration_date" %><br />
+  <%= submit_tag "Valider" %>
+</form>
+-->
+
+<div id="licenses">
+  <h2>Licenses</h2>
+  <%= render(:partial => "license", :collection => @company.licenses ) %>
+</div>
+
+<%= link_to 'New license', :controller => 'license', :action => 'new', :id => @company %>
+
+<!--
+<h3>Add a license :</h3>
+<%= form_remote_tag(:url => {:controller=> :company, :action => :add_license, :id => @company }, :update =>  'licenses', :position=> "after") %>
+  File name : <%= text_field "license", "filename" %><br />
+  <%= text_area "license", "comment" %><br />
+  <%= submit_tag "Valider" %>
+</form>
+-->

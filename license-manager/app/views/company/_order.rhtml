@@ -1,0 +1,6 @@
+<h3>
+<%=h order.expiration_date %> - <%=h order.start_date %>
+<%= link_to 'Edit', { :controller => 'order', :action => 'edit', :id => order }, :method => :post %>
+<%= link_to 'Destroy', { :action => 'remove_order', :order_id => order }, :method => :post %>
+</h3>
+<!-- <%= link_to_remote 'Destroy', :url => { :controller => 'company', :action => 'remove_order', :order_id => order }, :loading=>"Element.show('detroy#{order.id}')", :complete=>" new Effect.Fade('order#{order.id}')" %></h3> -->

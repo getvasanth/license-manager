@@ -3,6 +3,7 @@
   <b><%= column.human_name %>:</b> <%=h @license.send(column.name) %>
 </p>
 <% end %>
+<p><b>Order:</b> <%= @license.order.expiration_date %></p>
 
 <%= link_to 'Edit', :action => 'edit', :id => @license %> |
 <%= link_to 'Back', :controller => 'company', :action => 'show', :id => @license.company %>

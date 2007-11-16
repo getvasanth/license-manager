@@ -6,5 +6,8 @@
 
 <p><label for="order_start_date">Start date</label><br/>
 <%= date_select 'order', 'start_date'  %></p>
+
+<p><label for="order_flow">Flow</label><br/>
+<%= select 'order', 'flow', Flow::Flows %></p>
 <!--[eoform:order]-->
 

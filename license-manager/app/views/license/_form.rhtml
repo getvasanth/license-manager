@@ -4,7 +4,13 @@
 <p><label for="license_filename">Filename</label><br/>
 <%= text_field 'license', 'filename'  %></p>
 
+<p><label for="license_order_id">Order</label><br/>
+<%= select("license", "order_id", @license.company.orders.collect{|o| [o.expiration_date, o.id] }) %></p>
+
 <p><label for="license_comment">Comment</label><br/>
 <%= text_field 'license', 'comment'  %></p>
+
+<p><label for="order_flow">Flow</label><br/>
+<%= select 'license', 'flow', Flow::Flows %></p>
 <!--[eoform:license]-->
 

@@ -4,6 +4,7 @@ class LicenseController < ApplicationController
   def new
     @license=License.new
     @company=Company.find(params[:id])
+    @license.company=@company
   end
   
   def create

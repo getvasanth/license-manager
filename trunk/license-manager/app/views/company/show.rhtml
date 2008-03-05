@@ -1,3 +1,10 @@
+<style type="text/css" media="all">
+	@import url('/stylesheets/layout.css');
+	@import url('/stylesheets/layout.css');
+	@import url('/stylesheets/style.css');
+	@import url('/stylesheets/colors.css');
+</style>
+
 <% for column in Company.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @company.send(column.name) %>

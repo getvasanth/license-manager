@@ -1,6 +1,8 @@
 class CompanyController < ApplicationController
   scaffold :company
 
+  before_filter :login_required
+
 # ORDERS
   def add_order
     @order=Company.find(params[:id]).orders.create(params[:order])

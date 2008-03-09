@@ -4,14 +4,33 @@
   else
     bgcolor="#ffffff"
   end
+  if defined? license.order_id
+    order=Order.find(license.order_id)
+    #if defined? order
+    #  order=order.project
+    #end
+  end
+  #if (not defined? order)
+  #  order="[N/A]"
+  #end
+  #if order.length == 0
+  #  order="[N/A]"
+  #end
 %>
 
-<tr><td class="twikiFirstCol" bgcolor="<%= bgcolor%>"> <a href="http://irmcse11/twiki/bin/view/Cofluent/OrderNumber19" class="twikiLink">OrderNumber19</a> </td>
-<td bgcolor="<%= bgcolor%>"> 13/04/05 </td>
-<td bgcolor="<%= bgcolor%>"> <em>See attached .txt file</em> </td>
-<td bgcolor="<%= bgcolor%>"> System Architecting Design Flow </td>
-<td bgcolor="<%= bgcolor%>"> <a href="http://irmcse11/twiki/pub/Cofluent/CustomerNumber14/NRCLicenses.txt" target="_top">NRCLicenses.txt</a> </td>
-<td bgcolor="<%= bgcolor%>"></td>
+<tr><td class="twikiFirstCol" bgcolor="<%= bgcolor%>">
+<% if (defined? order) and (not order.nil?) %>
+<%= link_to (if order.project.nil? then '-' else order.project end), { :controller => 'order', :action => 'edit', :id => order }, :method => :post %>
+<% else %>
+-
+<% end %>
+<!-- <a href="http://irmcse11/twiki/bin/view/Cofluent/OrderNumber19" class="twikiLink">- <%= order %></a>-->
+</td>
+<td bgcolor="<%= bgcolor%>"> <%= license.send_date %> </td>
+<td bgcolor="<%= bgcolor%>"> <%= license.host_id %> </td>
+<td bgcolor="<%= bgcolor%>"> <%= license.flow %> </td>
+<td bgcolor="<%= bgcolor%>"> <a href="<%= license.filename %>"><%= license.filename %></a> </td>
+<td bgcolor="<%= bgcolor%>"> <%= license.comment %> </td>
 <!-- <h3><%=h license.filename %> - <%=h license.comment %> -->
 <td><%= link_to 'Edit', { :controller => 'license', :action => 'edit', :id => license }, :method => :post %></td>
 <td><%= link_to 'Destroy', { :action => 'remove_license', :license_id => license }, :method => :post %></h3></td>

@@ -12,6 +12,7 @@ class OrdersCompletion < ActiveRecord::Migration
     add_column :orders, :license_type, :string
     add_column :orders, :license_number, :string
     add_column :orders, :license_management, :string
+    add_column :orders, :comment, :string
   end
 
   def self.down
@@ -27,5 +28,6 @@ class OrdersCompletion < ActiveRecord::Migration
     remove_column :orders, :license_type
     remove_column :orders, :license_number
     remove_column :orders, :license_management
+    remove_column :orders, :comment
   end
 end

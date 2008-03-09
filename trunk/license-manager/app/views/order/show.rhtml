@@ -47,5 +47,7 @@
 <span class="patternButton">
 <span class="twikiAccessKey">
 <%= link_to 'Edit', :action => 'edit', :id => @order %>
+</span>&nbsp;|&nbsp;
+<span class="twikiAccessKey">
+<%= link_to 'Back', :controller => 'company', :action => 'show', :id => @order.company %>
 </span>
-<!-- | <%= link_to 'Back', :controller => 'company', :action => 'show', :id => @order.company %> -->

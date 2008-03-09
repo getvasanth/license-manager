@@ -1,6 +1,8 @@
 class LicenseController < ApplicationController
   scaffold :license
 
+  before_filter :login_required
+
   def new
     @license=License.new
     @company=Company.find(params[:id])

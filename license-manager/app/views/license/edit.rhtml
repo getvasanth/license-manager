@@ -2,8 +2,10 @@
 
 <% form_tag :action => 'update', :id => @license do %>
   <%= render :partial => 'form' %>
+  <br/>
   <%= submit_tag 'Edit' %>
 <% end %>
 
+<br/>
 <%= link_to 'Show', :action => 'show', :id => @license %> |
 <%= link_to 'Back', :controller => 'company', :action => 'show', :id => @license.company %>

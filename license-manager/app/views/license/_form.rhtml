@@ -8,9 +8,17 @@
 <%= select("license", "order_id", @license.company.orders.collect{|o| [o.expiration_date, o.id] }) %></p>
 
 <p><label for="license_comment">Comment</label><br/>
-<%= text_field 'license', 'comment'  %></p>
+<%= text_area 'license', 'comment', 'rows' => 10, 'cols' => 60 %></p>
 
 <p><label for="order_flow">Flow</label><br/>
-<%= select 'license', 'flow', Flow::Flows %></p>
+<%= select_tag 'flow[]', options_for_select(Flow::Flows), :size=>5, :multiple=>true %></p>
+
+<%=
+#'license', 
+# select_tag 'flavors[]',
+# [['vanilla','1'], ['strawberry','2'], ['chocolate','3']] , { :multiple => true, :size =>5 }
+#select_tag 'string[]',
+# ['vanilla', 'strawberry', 'chocolate'] , { :multiple => true, :size =>5 }
+%>
 <!--[eoform:license]-->
 

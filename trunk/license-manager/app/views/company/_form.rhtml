@@ -1,0 +1,32 @@
+<%= error_messages_for 'company' %>
+
+<!--[form:company]-->
+<p><label for="company_name">Name</label><br/>
+<%= text_field 'company', 'name'  %></p>
+
+<p><label for="company_address">Address</label><br/>
+<%= text_field 'company', 'address'  %></p>
+
+<p><label for="company_group">Group</label><br/>
+<%= text_field 'company', 'group'  %></p>
+
+<p><label for="company_contact">Contact</label><br/>
+<%= text_field 'company', 'contact'  %></p>
+
+<p><label for="company_country">Country</label><br/>
+<%= text_field 'company', 'country'  %></p>
+
+<p><label for="company_phone">Phone</label><br/>
+<%= text_field 'company', 'phone'  %></p>
+
+<p><label for="company_fax">Fax</label><br/>
+<%= text_field 'company', 'fax'  %></p>
+
+<p><label for="company_email">E-mail</label><br/>
+<%= text_field 'company', 'email'  %></p>
+
+<p><label for="company_status">Status</label><br/>
+<%= select 'company', 'status', Status::Statuses %></p>
+<br/>
+<!--[eoform:company]-->
+

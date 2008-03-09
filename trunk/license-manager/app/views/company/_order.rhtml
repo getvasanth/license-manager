@@ -1,6 +1,18 @@
+<li>
+<%
+projectName=order.project
+if projectName==nil
+  projectName='[N/A]'
+end
+%>
+<%= link_to '<em>'+projectName+'</em>', { :controller => 'order', :action => 'show', :id => order }, :method => :post %>
+<!-- <a href="http://irmcse11/twiki/bin/view/Cofluent/OrderNumber19" class="twikiLink">OrderNumber19</a> <em>Free: MARTES ITEA research project</em> -->
+</li>
+
+<!--
 <h3>
 <%=h order.expiration_date %> - <%=h order.start_date %>
 <%= link_to 'Edit', { :controller => 'order', :action => 'edit', :id => order }, :method => :post %>
 <%= link_to 'Destroy', { :action => 'remove_order', :order_id => order }, :method => :post %>
-</h3>
+</h3> -->
 <!-- <%= link_to_remote 'Destroy', :url => { :controller => 'company', :action => 'remove_order', :order_id => order }, :loading=>"Element.show('detroy#{order.id}')", :complete=>" new Effect.Fade('order#{order.id}')" %></h3> -->

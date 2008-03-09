@@ -1,47 +1,62 @@
-<style type="text/css" media="all">
-	@import url('/stylesheets/layout.css');
-	@import url('/stylesheets/layout.css');
-	@import url('/stylesheets/style.css');
-	@import url('/stylesheets/colors.css');
-</style>
+<h1><%= @company.name %> Customer</h1>
 
-<% for column in Company.content_columns %>
+<h2><a name="Customer_Information"></a> Customer Information </h2>
+
+<ul>
+<li> <strong>Company:</strong> Nokia
+</li> <li> <strong>BU/Dpt/Group:</strong> <%= @company.group %>
+</li> <li> <strong>Contact name:</strong> <%= @company.contact %>
+</li> <li> <strong>Address:</strong> <%= @company.address %>
+</li> <li> <strong>Country:</strong> <%= @company.country %>
+</li> <li> <strong>Tel:</strong> <%= @company.phone %>
+</li> <li> <strong>Fax:</strong> <%= @company.fax %>
+
+</li> <li> <strong>E-mail:</strong> <a href="mailto:<%= @company.email %>"><%= @company.email %></a>
+</li></ul> 
+
+<h2><a name="Status"></a> Status </h2>
+<p> </p><ul>
+<li> <strong>Status:</strong> <%= @company.status %>
+</li></ul> 
+
+<!-- <% for column in Company.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @company.send(column.name) %>
 </p>
-<% end %>
-
-<%= link_to 'Edit', :action => 'edit', :id => @company %> |
-<%= link_to 'Back', :action => 'list' %>
+<% end %> -->
 
 <div id="orders">
-  <h2>Orders</h2>
+  <h2>List of Orders</h2>
+  <ul>
   <%= render(:partial => "order", :collection => @company.orders ) %>
+  </ul> 
+<p>
 </div>
-
-<%= link_to 'New order', :controller => 'order', :action => 'new', :id => @company %>
-
-<!--
-<h3>Add an order :</h3>
-<%= form_remote_tag(:url => {:controller=> :company, :action => :add_order, :id => @company }, :update =>  'orders', :position=> "after") %>
-  Start date : <%= date_select "order", "start_date" %><br />
-  Expiration date : <%= date_select "order", "expiration_date" %><br />
-  <%= submit_tag "Valider" %>
-</form>
--->
 
 <div id="licenses">
-  <h2>Licenses</h2>
-  <%= render(:partial => "license", :collection => @company.licenses ) %>
+  <h2>List of Licenses</h2>
+  <table class="twikiTable" border="0" cellpadding="1" cellspacing="1"><tbody><tr>
+  <th class="twikiFirstCol" bgcolor="#dadada"> <a rel="nofollow"><font color="#000000">Order Number</font></a> </th>
+  <th bgcolor="#dadada"> <a rel="nofollow"><font color="#000000">Send Date</font></a> </th>
+  <th bgcolor="#dadada"> <a rel="nofollow"><font color="#000000">Host ID</font></a> </th>
+  <th bgcolor="#dadada"> <a rel="nofollow"><font color="#000000">Flow</font></a> </th>
+  <th bgcolor="#dadada"> <a rel="nofollow"><font color="#000000">License File</font></a> </th>
+  <th bgcolor="#dadada"> <a rel="nofollow"><font color="#000000">Comment</font></a> </th></tr>
+  <% i=0 %>
+  <% for license in @company.licenses %>
+  <% i=i+1 %>
+  <%= render(:partial => "license", :locals => { :license => license, :i =>i }) %>
+  <!-- :collection => @company.licenses ) -->
+  <% end %>
+  </table>
+<p>
 </div>
 
-<%= link_to 'New license', :controller => 'license', :action => 'new', :id => @company %>
-
-<!--
-<h3>Add a license :</h3>
-<%= form_remote_tag(:url => {:controller=> :company, :action => :add_license, :id => @company }, :update =>  'licenses', :position=> "after") %>
-  File name : <%= text_field "license", "filename" %><br />
-  <%= text_area "license", "comment" %><br />
-  <%= submit_tag "Valider" %>
-</form>
--->
+<div class="patternTopicActions">
+<div class="patternTopicAction">
+<span class="patternActionButtons">
+<span class="patternButton">
+<span class="twikiAccessKey"><%= link_to 'Edit', :action => 'edit', :id => @company %> </span><span class="twikiSeparator">&nbsp;|&nbsp;</span>
+<span class="twikiAccessKey"><%= link_to 'Create New Order', :controller => 'order', :action => 'new', :id => @company %></span><span class="twikiSeparator">&nbsp;|&nbsp;</span>
+<span class="twikiAccessKey"><%= link_to 'Create New License', :controller => 'license', :action => 'new', :id => @company %></span><span class="twikiSeparator">&nbsp;|&nbsp;</span>
+<span class="twikiAccessKey"><%= link_to 'Show All Companies', :action => 'list' %> </span>

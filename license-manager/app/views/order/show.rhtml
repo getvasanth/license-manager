@@ -1,8 +1,51 @@
-<% for column in Order.content_columns %>
+<h1><%= @order.project %> Order</h1>
+
+<h2>Customer information</h2>
+<ul>
+<li> 
+<%= link_to @order.company.name, :controller => 'company', :action => 'show', :id => @order.company %>
+<!-- <a href="http://irmcse11/twiki/bin/view/Cofluent/CustomerNumber14" class="twikiLink">CustomerNumber14</a> -->
+</li> <li> <strong>Project name:</strong> <%= @order.project %>
+</li> <li> <strong>Buyer contact information:</strong> <em><%= @order.buyer %></em>
+</li></ul> 
+
+<p>
+</p><h2><a name="Receive_Date"></a> Receive Date </h2>
+<p> </p><ul>
+<li> <strong>Date:</strong> <%= @order.receiveDate %>
+</li></ul> 
+<p>
+</p><h2><a name="Order_Information"></a> Order Information </h2>
+<p> </p><ul>
+
+<li> <strong>Product:</strong> <%= @order.product %>
+</li> <li> <strong>Version:</strong> <%= @order.version %>
+</li> <li> <strong>Type:</strong> <%= @order.type %>
+</li> <li> <strong>Package:</strong> <%= @order.package %>
+</li> <li> <strong>Extension:</strong> <%= @order.extension %>
+</li> <li> <strong>Technology:</strong> <%= @order.technology %>
+</li> <li> <strong>License type:</strong> <%= @order.license_type %>
+</li> <li> <strong>License duration:</strong> TODO Months
+
+</li> <li> <strong>License start date:</strong> <%= @order.start_date %>
+</li> <li> <strong>License end date:</strong> <%= @order.expiration_date %>
+</li> <li> <strong>Number of seats:</strong> <%= @order.license_number %>
+</li> <li> <strong>License management:</strong> <%= @order.license_management %>
+
+</li></ul> 
+<p>
+
+<!-- <% for column in Order.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @order.send(column.name) %>
 </p>
-<% end %>
+<% end %> -->
 
-<%= link_to 'Edit', :action => 'edit', :id => @order %> |
-<%= link_to 'Back', :controller => 'company', :action => 'show', :id => @order.company %>
+<div class="patternTopicActions">
+<div class="patternTopicAction">
+<span class="patternActionButtons">
+<span class="patternButton">
+<span class="twikiAccessKey">
+<%= link_to 'Edit', :action => 'edit', :id => @order %>
+</span>
+<!-- | <%= link_to 'Back', :controller => 'company', :action => 'show', :id => @order.company %> -->

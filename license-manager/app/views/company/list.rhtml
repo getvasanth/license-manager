@@ -1,27 +1,55 @@
-<h1>Listing companies</h1>
+<h1>Customer Data Base</h1>
+<p>
+Data base of all customers
+</p><p>
+</p><hr>
+<p>
+For each customer (identified by a unique customer number):
+</p><p> </p><ul>
+<li> Customer information
+</li> <li> Status = Active or Expired
+</li> <li> List of orders (identified by a unique order number)
+</li> <li> List of licenses
+
+</li> <li> List of shipments
+</li> <li> List of customer service requests (identified by a unique CSR number)
+</li></ul> 
+<p>
+</p><hr>
+<p>
+</p>
+
 
 <table class="twikiTable" border="0" cellpadding="1" cellspacing="1">
   <tr>
   <!-- <% for column in Company.content_columns %>
     <th class="twikiFirstCol"><%= column.human_name %></th>
   <% end %> -->
-  <th class="twikiFirstCol"><a>Company Name</a></th>
-  <th class="twikiFirstCol"><a>Business Unit/Group/Department</a></th>
-  <th class="twikiFirstCol"><a>City, Country</a></th>
-  <th class="twikiFirstCol"><a>Contact Name</a></th>
+  <th class="twikiFirstCol" bgcolor="#dadada"><a><font color="#000000">Company Name</a></th>
+  <th class="twikiFirstCol" bgcolor="#dadada"><a><font color="#000000">Business Unit/Group/Department</a></th>
+  <th class="twikiFirstCol" bgcolor="#dadada"><a><font color="#000000">City, Country</a></th>
+  <th class="twikiFirstCol" bgcolor="#dadada"><a><font color="#000000">Contact Name</a></th>
   </tr>
-  
+<% i=0 %>
 <% for company in @companies %>
   <tr>
   <!-- <% for column in Company.content_columns %>
     <td class="twikiFirstCol"><%=h company.send(column.name) %></td>
   <% end %> -->
-    <td><%= link_to company.name, :action => 'show', :id => company %></td>
-    <td><%= company.group %>
-    <td><%= company.country %>
-    <td><%= company.contact %>
-    <td><%= link_to 'Edit', :action => 'edit', :id => company %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => company }, :confirm => 'Are you sure?', :method => :post %></td>
+    <%
+    i=i+1
+    if i%2==0
+      bgcolor="#eaeaea"
+    else
+      bgcolor="#ffffff"
+    end
+    %>
+    <td class="twikiFirstCol" bgcolor="<%=bgcolor%>"><%= link_to company.name, :action => 'show', :id => company %></td>
+    <td class="twikiFirstCol" bgcolor="<%=bgcolor%>"><%= company.group %>
+    <td class="twikiFirstCol" bgcolor="<%=bgcolor%>"><%= company.country %>
+    <td class="twikiFirstCol" bgcolor="<%=bgcolor%>"><%= company.contact %>
+    <td class="twikiFirstCol" bgcolor="<%=bgcolor%>"><%= link_to 'Edit', :action => 'edit', :id => company %></td>
+    <td class="twikiFirstCol" bgcolor="<%=bgcolor%>"><%= link_to 'Destroy', { :action => 'destroy', :id => company }, :confirm => 'Are you sure?', :method => :post %></td>
   </tr>
 <% end %>
 </table>
@@ -31,4 +59,10 @@
 
 <br />
 
-<%= link_to 'New company', :action => 'new' %>
+<div class="patternTopicActions">
+<div class="patternTopicAction">
+<span class="patternActionButtons">
+<span class="patternButton">
+<span class="twikiAccessKey"><%= link_to 'Create New Company', :action => 'new' %></span>
+
+</div><!-- /patternMainContents-->

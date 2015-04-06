@@ -1,0 +1,1 @@
+Manage a pool of clients, who orders license software.
